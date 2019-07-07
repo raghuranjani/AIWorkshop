@@ -1,0 +1,18 @@
+CREATE EXTERNAL TABLE `reviewsentimentanalysis`(
+  `imagelocation` string, 
+  `timestamp` string, 
+  `sentiment` string, 
+  `positive` string, 
+  `negative` string, 
+  `neutral` string, 
+  `mixed` string)
+ROW FORMAT DELIMITED 
+  FIELDS TERMINATED BY ',' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://review-sentiment-s3-17avflvj8736/sentiment'
+TBLPROPERTIES (
+  'transient_lastDdlTime'='1562239159')
